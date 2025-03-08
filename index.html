@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DidSee: Diffusion-Based Depth Completion for Material-Agnostic Robotic Perception and Manipulation">
+  <meta name="keywords" content="depth completion, non-Lambertian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DidSee</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1FWSVCGZTG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1FWSVCGZTG');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./css/twentytwenty.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="icon" href="./images/didsee_icon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="./js/jquery-3.2.1.min.js"></script>
+  <script src="./js/jquery.event.move.js"></script>
+  <script src="./js/jquery.twentytwenty.js"></script>
+  <script src="./js/bulma-carousel.min.js"></script>
+  <script src="./js/bulma-slider.min.js"></script>
+  <script src="./js/fontawesome.all.min.js"></script>
+  <!-- MathJax-->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DidSee👓: Diffusion-Based Depth Completion for Material-Agnostic Robotic Perception and Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Anonymous Submission
+            </span>
+          </div>
+
+            <!-- Code Link. -->
+            <span class="link-block">
+              <a href=" " target="_blank" rel="noopener noreferrer"
+                  class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github" style="font-size:23px"></i>
+                </span>
+                <span>
+                  Code Released Soon
+                </span>
+              </a>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" width="100%" src="./images/teaser.png" alt="Teaser"/>
+      <h2 class="subtitle">
+        We prompse <span class="methodname" style="font-weight: bold;">DidSee</span>, a diffusion-based depth completion framework for non-Lambertian objects. <span class="methodname" style="font-weight: bold;">DidSee</span> reduces depth restoration errors by mitigating signal leakage and exposure biases while incorporating a novel semantic enhancer (Right). Without scaling up data size, it generalizes robustly to in-the-wild scenes (Left) and facilitates material-agnostic robotic perception and manipulation in real-world scenarios.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+        <p>
+          Commercial RGB-D cameras often produce noisy, incomplete depth maps for non-Lambertian objects. Traditional depth completion methods struggle to generalize due to the limited diversity and scale of training data. Recent advances exploit visual priors from pre-trained text-to-image diffusion models to enhance generalization in dense prediction tasks.
+        </p><p>
+          However, we find that biases arising from training-inference mismatches in the vanilla diffusion framework significantly impair depth completion performance. Additionally, the lack of distinct visual features in non-Lambertian regions further hinders precise prediction.        </p><p>
+        </p><p>
+          To address these issues, we propose <span class="methodname" style="font-weight: bold;">DidSee</span>, a diffusion-based framework for depth completion on non-Lambertian objects. First, we integrate a rescaled noise scheduler enforcing a zero terminal signal-to-noise ratio to eliminate signal leakage bias. Second, we devise a noise-agnostic single-step training formulation to alleviate error accumulation caused by exposure bias and optimize the model with a task-specific loss. Finally, we incorporate a semantic enhancer that enables joint depth completion and semantic segmentation, distinguishing objects from backgrounds and yielding precise, fine-grained depth maps.
+        </p><p>
+        <span class="methodname" style="font-weight: bold;">DidSee</span> achieves state-of-the-art performance on multiple benchmarks, demonstrates robust real-world generalization, and effectively improves downstream tasks such as category-level pose estimation and robotic grasping.
+        </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <h3 class="title has-text-centered">
+            <span style="color: rgb(15, 113, 224);">Di</span><span style="color: rgb(113, 43, 225);">d</span><span style="color: rgb(231, 171, 20);">See</span>: <span style="color: rgb(15, 113, 224);">Di</span>ffusion-Based <span style="color: rgb(113, 43, 225);">D</span>epth <span style="color: rgb(231, 171, 20);">C</span>ompletion
+          </h3>
+          <p>
+            During training, the pre-trained VAE encoder $\mathcal{E}$ encodes the image $\mathbf{x}$, raw depth $\mathbf{d}$, and ground truth depth $\mathbf{y^{d}}$ into latent space, producing $\mathbf{z^x}$, $\mathbf{z^d}$, and $\mathbf{z^y_0}$, respectively.
+          &#9312;The noisy input $\mathbf{z}_t^\mathbf{y}$ is generated using a rescaled noise scheduler, which enforces a terminal-SNR of zero to eliminate signal leakage bias.
+          &#9313;We adopt a noise-agnostic single-step diffusion formulation with a fixed timestep $t=T$ to mitigate the exposure bias that arises during multi-step sampling. In this formulation, the model's prediction $\hat{\mathbf{v}}_T$ equals the estimated latent $\hat{\mathbf{z}}_0^\mathbf{y}$, which is then decoded by the VAE decoder $\mathcal{D}$ into a depth map. Consequently, we supervise the denoising model $f_{\theta}$ using a task-specific loss in pixel space to enhance performance
+          &#9314;We introduce a novel semantic enhancer that enables the model to jointly perform depth completion and semantic regression, improving object-background distinction and ensuring fine-grained depth prediction.
+          &#9315;The restored depth maps can be applied to downstream tasks, such as pose estimation and robotic grasping on non-Lambertian objects.
+        </p>
+        <img id="framework" width="100%" src="./images/framework.png" alt="DidSee Framework"/>
+        <br>
+      </div>
+          
+          <h2 class="title is-3">Demo Video</h2>
+          <div class="content has-text-justified">
+          <h3 class="title has-text-centered">
+            Material-Agnostic Scene Reconstruction and Robotic Grasping
+          </h3>
+          <video controls autoplay>
+            <source src="videos/supp_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          </div>
+          <h2 class="title is-3">More Qualitative Results</h2>
+          <div class="content has-text-justified">
+          <h3 class="title has-text-centered">
+            In-the-wild Scenes
+          </h3>
+
+
+          <img id="comparison1" width="100%" src="./images/supp_wild1.png" alt="Comparison with other methods"/>
+          <img id="comparison2" width="100%" src="./images/supp_wild2.png" alt="Comparison with other methods"/>
+
+          <p class="mt-5">
+            Please refer to our paper for more technical details :)
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+  </div>
+</section>
+
+<footer class="footer pt-4 pb-0">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template based on
+            <a href="https://marigoldmonodepth.github.io/">
+            Marigold
+            </a>
+            and licensed under
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            CC-BY-SA-4.0
+            </a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
